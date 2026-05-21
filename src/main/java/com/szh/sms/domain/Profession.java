@@ -19,4 +19,8 @@ public class Profession {
    * 专业名
    */
   private String name;
+  /**
+   * 关联课程数量
+   */
+  private Integer courseCount;
 }

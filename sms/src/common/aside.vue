@@ -29,6 +29,11 @@
         <span slot="title">&#12288课程录入</span>
       </el-menu-item>
 
+      <el-menu-item index="profession" v-if="level === 0" :class="{active: $route.name === '专业管理'}">
+        <i class="el-icon-menu"></i>
+        <span slot="title">&#12288专业管理</span>
+      </el-menu-item>
+
       <el-submenu index="userManage" v-if="level !== 2">
         <template slot="title">
         <i class="el-icon-user-solid"></i>

@@ -7,6 +7,7 @@
     <resultMap id="BaseUserMap" type="com.szh.sms.domain.Profession" >
         <result column="id" property="id" jdbcType="INTEGER" />
         <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="course_count" property="courseCount" jdbcType="INTEGER" />
     </resultMap>
      <insert id="addProfession" parameterType="com.szh.sms.domain.Profession">
          <selectKey keyProperty="id" resultType="java.lang.Integer" order="AFTER">
@@ -27,6 +28,42 @@
             id = #{id}
         </where>
     </delete>
+    <update id="updateProfession" parameterType="com.szh.sms.domain.Profession">
+        UPDATE profession
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                `name` = #{name},
+            </if>
+        </trim>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+    <update id="updateStudentProfession">
+        UPDATE student
+        SET profession = #{newName}
+        WHERE profession = #{oldName}
+    </update>
+    <update id="updateCourseProfession">
+        UPDATE course
+        SET profession = #{newName}
+        WHERE profession = #{oldName}
+    </update>
+    <update id="updateTeacherCourseProfession">
+        UPDATE teacher_course
+        SET profession = #{newName}
+        WHERE profession = #{oldName}
+    </update>
+    <update id="updateTimetableProfession">
+        UPDATE timetable
+        SET profession = #{newName}
+        WHERE profession = #{oldName}
+    </update>
+    <update id="updateCourseInfoProfession">
+        UPDATE course_info
+        SET profession = #{newName}
+        WHERE profession = #{oldName}
+    </update>
     <select id="checkProfessionCount" resultType="int" parameterType="string">
         select count(0) from profession
         <where>
@@ -35,8 +72,29 @@
     </select>
     <select id="getProfessionList" resultMap="BaseUserMap" parameterType="map">
         SELECT
+            a.*,
+            COUNT(b.id) AS course_count
+        from profession a
+        left join course b
+        on a.name = b.profession
+        GROUP BY a.id, a.name
+        ORDER BY a.id
+    </select>
+    <select id="getProfessionById" resultMap="BaseUserMap" parameterType="int">
+        SELECT
             *
         from profession
+        where id = #{id}
+    </select>
+    <select id="countProfessionReferences" resultType="int" parameterType="string">
+        SELECT
+            (
+                (SELECT COUNT(0) FROM student WHERE profession = #{name})
+                + (SELECT COUNT(0) FROM course WHERE profession = #{name})
+                + (SELECT COUNT(0) FROM teacher_course WHERE profession = #{name})
+                + (SELECT COUNT(0) FROM timetable WHERE profession = #{name})
+                + (SELECT COUNT(0) FROM course_info WHERE profession = #{name})
+            )
     </select>
 
     <select id="getProfessionIdByName" resultMap="BaseUserMap" parameterType="string">
@@ -46,4 +104,3 @@
         where name = #{name}
     </select>
 </mapper>
-

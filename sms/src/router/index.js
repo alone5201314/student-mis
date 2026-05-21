@@ -9,6 +9,7 @@ import account from '../components/account/account'
 import student from '../components/student/student'
 import teacher from '../components/teacher/teacher'
 import admin from '../components/admin/admin'
+import Profession from '../components/profession/Profession'
 import timetable from '../components/timetable/timetable'
 import analysis from '../components/analysis/index'
 import error from '../common/error/error'
@@ -72,6 +73,11 @@ export default new Router({
           name: '管理员用户',
           meta: { requireAuth: true, level: 0},
           component: admin,
+        }, {
+          path: '/profession',
+          name: '专业管理',
+          meta: { requireAuth: true, level: 0},
+          component: Profession,
         }, {
           path: '/timetable',
           name: '课程表',
