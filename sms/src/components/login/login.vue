@@ -40,7 +40,8 @@
                 note: {
                     backgroundImage: 'url(/static/hanghai-bg.jpg)',
                     backgroundRepeat: 'no-repeat',
-                    backgroundSize: '100%'
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center center'
                 },
                 starSty: ''
             }
@@ -101,9 +102,18 @@
     transition: 0.8s
   }
 
+  .login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: clamp(24px, 8vh, 96px) 24px;
+  }
+
   .loginForm {
-    width: 400px;
-    margin: 150px 580px 0 580px;
+    width: min(400px, 100%);
+    margin: 0;
   }
   .title {
     padding: 10px 10px;
@@ -112,5 +122,11 @@
     background-color:#D5D5D5;
     transform: rotate(120deg);
     box-sizing: border-box;
+  }
+
+  @media (max-height: 720px) {
+    /deep/ .el-tabs--border-card > .el-tabs__content {
+      padding-top: 0;
+    }
   }
 </style>

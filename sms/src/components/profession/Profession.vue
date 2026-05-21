@@ -1,10 +1,10 @@
 <template>
-  <el-card style="margin: 10px;padding: 15px 10px 10px 10px">
-    <el-row style="margin-bottom: 10px">
+  <el-card class="responsive-card" style="margin: 10px;padding: 15px 10px 10px 10px">
+    <el-row class="responsive-toolbar">
       <el-button type="primary" size="small" @click="addMethod">新增</el-button>
       <el-button type="danger" size="small" @click="deleteSelect">删除</el-button>
       <el-input
-        style="float:right;width:300px;"
+        class="toolbar-search"
         size="small"
         v-model="searchValue.code"
         placeholder="请输入专业编号或名称"

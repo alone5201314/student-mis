@@ -182,6 +182,7 @@ public class TimetableServiceImpl implements TimetableService {
       Map<String, Object> map = new HashMap<>();
       map.put("profession", teacherCourse.getProfession());
       map.put("grade", teacherCourse.getGrade());
+      map.put("year", condition.get("year"));
       map.put("term", teacherCourse.getTerm());
       map.put("week", condition.get("week"));
       // 根据专业班级获取课程表

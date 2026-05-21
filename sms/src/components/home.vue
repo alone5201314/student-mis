@@ -97,24 +97,27 @@ export default {
     /*background-image: linear-gradient(rgba(90,139,255,1), white);*/
     border-right: 1px solid #e6e6e6;
     width: 240px;
+    min-width: 58px;
     transition: 0.2s;
     height: 100%
   }
   .header {
     height: calc(100vh - 70px);
     min-height: calc(100vh - 70px);
+    min-width: 960px;
   }
   .mainContent {
     background-color: #ededed;
     padding: 0;
     height: calc(100vh - 70px);
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: auto;
   }
   .pageContent {
     min-height: calc(100vh - 140px);
     padding-bottom: 8px;
     box-sizing: border-box;
+    min-width: 900px;
   }
   ::v-deep .el-card__body {
     padding: 0;
@@ -127,5 +130,19 @@ export default {
     width: 100%;
     font-size: 12px;
     color: #666;
+  }
+
+  @media (max-width: 1366px), (max-height: 760px) {
+    .headColor {
+      height: 60px;
+    }
+    .header,
+    .mainContent {
+      height: calc(100vh - 60px);
+      min-height: calc(100vh - 60px);
+    }
+    .pageContent {
+      min-height: calc(100vh - 126px);
+    }
   }
 </style>

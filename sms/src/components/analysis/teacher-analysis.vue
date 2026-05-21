@@ -385,7 +385,7 @@
               }
             }
             this.gradeArr = this.form.professionObj.grade;
-            this.courseArr = this.classArr[0].course;
+            this.courseArr = this.form.professionObj.course;
             this.click();
           }
         }).catch(error => {
@@ -489,7 +489,9 @@
     watch: {
       collapse() {
         setTimeout(() => {
-          this.$refs['chart'].resize()
+          if (this.$refs['chart']) {
+            this.$refs['chart'].resize()
+          }
         }, 150)
       }
     },

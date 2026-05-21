@@ -40,4 +40,39 @@
 }
 /*内容不可选中，复制  --end-- */
 
+.responsive-card {
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.responsive-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.responsive-toolbar .toolbar-search {
+  margin-left: auto;
+  width: clamp(220px, 28vw, 320px);
+}
+
+@media (max-width: 1366px), (max-height: 760px) {
+  .responsive-card {
+    margin: 8px !important;
+    padding: 10px !important;
+  }
+
+  .responsive-toolbar .toolbar-search {
+    width: clamp(220px, 36vw, 300px);
+  }
+}
+
+@media (max-width: 1080px) {
+  .responsive-toolbar .toolbar-search {
+    margin-left: 0;
+    width: 100%;
+  }
+}
 

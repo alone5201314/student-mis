@@ -1,7 +1,7 @@
 <template>
-  <div style="color: white" >
-    <img src="../assets/header.png" alt="" width="40" height="40" style="margin: 10px 90px 10px 50px;float: left" />
-    <i class="el-icon-menu collapse" @click="clickCollapse" style="margin-right: 20px;float: left"></i>
+  <div class="topHeader">
+    <img class="logo" src="../assets/header.png" alt="" width="40" height="40" />
+    <i class="el-icon-menu collapse" @click="clickCollapse"></i>
     <div class="misName">瀚海大学学生成绩管理系统</div>
     <el-switch v-model="silent"
                v-if="userInfo.level === 0"
@@ -9,8 +9,8 @@
                :active-color="'#67c23a'"
                :inactive-color="'#ccc'"
                inactive-text="默哀模式"
-               style="margin: 20px 20px 20px 20px;color: white;float: left"></el-switch>
-    <div style="float: right; margin-right: 16px">
+               class="silentSwitch"></el-switch>
+    <div class="userArea">
       <!--日期-->
       <div class="font" v-html="day"></div>
       <!--头像-->
@@ -18,7 +18,7 @@
         {{firstStr}}
       </div>
       <!--用户名-->
-      <div style="float: right;margin-right: 20px;margin-top: 18px;color: white">
+      <div class="userName">
         <el-dropdown trigger="click">
           <span class="el-dropdown-link">
             {{userInfo.realName}}<i class="el-icon-arrow-down el-icon--right"></i>
@@ -98,11 +98,26 @@
 </script>
 
 <style scoped>
+  .topHeader {
+    height: 70px;
+    color: white;
+    display: flex;
+    align-items: center;
+    min-width: 960px;
+    box-sizing: border-box;
+    padding: 0 16px 0 36px;
+    overflow: hidden;
+  }
+  .logo {
+    flex: 0 0 auto;
+    margin-right: clamp(20px, 5vw, 90px);
+  }
   /* 旋转的关闭按钮*/
   .collapse {
     font-size: 25px;
-    float: right;
-    line-height: 60px;
+    flex: 0 0 auto;
+    line-height: 1;
+    margin-right: 20px;
     transition: 0.2s;
     transform: rotate(-180deg);
     cursor: pointer;
@@ -114,9 +129,9 @@
   }
   .font {
     font-size: 18px;
-    margin-right: 80px;
+    margin-right: clamp(16px, 4vw, 80px);
     line-height: 60px;
-    float: left;
+    white-space: nowrap;
   }
   .image {
     border-radius: 50%;
@@ -124,10 +139,14 @@
     margin-top: 5px
   }
   .misName {
-    margin-left: 50px;
-    float: left;
+    flex: 0 1 auto;
+    min-width: 0;
+    margin-right: 20px;
     font-size: 24px;
-    line-height: 60px
+    line-height: 60px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .username {
     margin-right: 10px;
@@ -138,12 +157,13 @@
     font-size: 17px;
     cursor: pointer;
     color: white;
+    white-space: nowrap;
   }
   .el-icon-arrow-down {
     font-size: 17px;
   }
   .headerStr {
-    float: left;
+    flex: 0 0 auto;
     margin-right: 12px;
     border: 3px solid white;
     border-radius: 50px;
@@ -157,6 +177,21 @@
     margin-top: 4px;
     background-color: white;
   }
+  .silentSwitch {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    color: white;
+  }
+  .userArea {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+  .userName {
+    color: white;
+    min-width: 0;
+  }
   /*打开默哀模式时*/
   /deep/ .el-switch__label.is-active {
    /*filter:progid:DXImageTransform.Microsoft. BasicImage(grayscale=1); -webkit-filter: grayscale(100%);*/
@@ -165,5 +200,37 @@
   /*关闭默哀模式时*/
   /deep/ .el-switch__label--left {
     color: white !important;
+  }
+
+  @media (max-width: 1366px), (max-height: 760px) {
+    .topHeader {
+      height: 60px;
+      padding-left: 24px;
+    }
+    .logo {
+      width: 36px;
+      height: 36px;
+      margin-right: 28px;
+    }
+    .misName {
+      font-size: 20px;
+      margin-right: 12px;
+    }
+    .font {
+      display: none;
+    }
+    .headerStr {
+      width: 38px;
+      height: 38px;
+      line-height: 38px;
+      font-size: 28px;
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 1120px) {
+    .silentSwitch {
+      display: none;
+    }
   }
 </style>

@@ -346,8 +346,13 @@
   .page {
     margin-top: 10px;
     display: flex;
-    float: left;
     align-items: center;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    overflow-x: auto;
+  }
+  .footer {
+    flex-wrap: wrap;
   }
   .el-table {
     border-top: 1px solid #E7E7E7;
@@ -386,5 +391,19 @@
   /deep/ .el-table th, .el-table tr {
     font-family: Serif !important;
   }
+  /deep/ .el-pagination {
+    white-space: normal;
+  }
+  @media (max-width: 1366px), (max-height: 760px) {
+    .el-table {
+      margin-top: 3px;
+    }
+    /deep/ .el-table td,
+    /deep/ .el-table th {
+      padding: 8px 0;
+    }
+    /deep/ .el-pagination__jump {
+      margin-left: 8px;
+    }
+  }
 </style>
-

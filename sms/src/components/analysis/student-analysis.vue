@@ -489,7 +489,9 @@
     watch: {
       collapse() {
         setTimeout(() => {
-          this.$refs['chart'].resize()
+          if (this.$refs['chart']) {
+            this.$refs['chart'].resize()
+          }
         }, 150)
       }
     },

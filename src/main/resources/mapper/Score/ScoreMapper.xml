@@ -135,14 +135,14 @@
             a.credits as creditsByUser,
             a.score as scoreByUser,
             b.real_name,
-            b.admission_time as year,
+            a.year,
             b.grade,
             b.profession,
             c.name,
             c.credits,
             c.score,
             c.number,
-            c.term,
+            a.term,
             c.type
         FROM
             student_course a
@@ -153,10 +153,10 @@
                 AND a.student_id = #{condition.studentName}
             </if>
             <if test="condition.year != null and condition.year != ''">
-                AND b.admission_time = #{condition.year}
+                AND a.year = #{condition.year}
             </if>
             <if test="condition.term != null and condition.term != ''">
-                AND c.term = #{condition.term}
+                AND a.term = #{condition.term}
             </if>
         </where>
         order by a.id
@@ -319,13 +319,12 @@
                 AND a.student_id = #{condition.studentName}
             </if>
             <if test="condition.year != null and condition.year != ''">
-                AND b.admission_time = #{condition.year}
+                AND a.year = #{condition.year}
             </if>
             <if test="condition.term != null and condition.term != ''">
-                AND c.term = #{condition.term}
+                AND a.term = #{condition.term}
             </if>
         </where>
     </select>
 
 </mapper>
-

@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: white;">
+  <div class="tabsBar">
     <el-tag
       class="tag"
       :class="{tagClick: $route.name === tab.name}"
@@ -67,8 +67,25 @@
 </script>
 
 <style scoped>
+ .tabsBar {
+   background-color: white;
+   display: flex;
+   align-items: flex-end;
+   overflow-x: auto;
+   overflow-y: hidden;
+   white-space: nowrap;
+   min-height: 42px;
+ }
+ .tabsBar::-webkit-scrollbar {
+   height: 6px;
+ }
+ .tabsBar::-webkit-scrollbar-thumb {
+   background: #dcdfe6;
+   border-radius: 6px;
+ }
   /* .tag 为默认样式  .tagClick 为点击后样式*/
  .tag {
+   flex: 0 0 auto;
    margin: 10px 0 1px 12px;
    border: #ebebeb 1px solid;
    text-align: center;

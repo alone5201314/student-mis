@@ -424,6 +424,7 @@
       getTimetableByTeacher () {
         let obj = {
           teacherId: this.userInfo.id,
+          year: this.form.year,
           week: this.week
         };
         this.axiosHelper.get(
@@ -496,7 +497,7 @@
         // 默认选择当前年份或入学年份中的较大值
         let now = new Date().getFullYear();
         let old = parseInt(this.userInfo.admissionTime);
-        this.form.year = Math.max(old, now);
+        this.form.year = Number.isNaN(old) ? now : Math.max(old, now);
         let month = new Date().getMonth()+1;
         if (month > 2 && month < 6) {
           // 上学期

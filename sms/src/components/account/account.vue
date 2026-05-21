@@ -10,9 +10,9 @@
         </el-card>
       </el-col>
       <el-col :span="19">
-        <el-card style="margin: 10px;padding: 15px 10px 10px 10px">
-          <el-row style="margin-bottom: 10px">
-            <el-input style="float:right;width:300px;" size="small" v-model="searchValue.code" placeholder="请输入账号或姓名" clearable @keyup.enter.native="filterData" maxlength="15">
+        <el-card class="responsive-card" style="margin: 10px;padding: 15px 10px 10px 10px">
+          <el-row class="responsive-toolbar">
+            <el-input class="toolbar-search" size="small" v-model="searchValue.code" placeholder="请输入账号或姓名" clearable @keyup.enter.native="filterData" maxlength="15">
               <el-button slot="append" @click="filterData" type="primary">过滤</el-button>
             </el-input>
           </el-row>
