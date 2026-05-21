@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/alone/Desktop/biye/sms-master/sms/**)",
+      "Bash(npm run:*)",
+      "Read(//c/Users/alone/Desktop/biye/sms-master/**)",
+      "Bash(./mvnw spring-boot:run)"
+    ]
+  }
+}
